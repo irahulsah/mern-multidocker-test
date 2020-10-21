@@ -4,7 +4,6 @@ phases:
     runtime-versions:
       docker: 19
     commands:
-      - systemctl start docker
       - docker version
   pre_build:
     commands:
