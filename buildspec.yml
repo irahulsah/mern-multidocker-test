@@ -1,50 +1,33 @@
 version: 0.2
-
 phases:
   install:
-    commands:
-      - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2
-      - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
+    runtime-versions:
+      docker: 19
+    
   pre_build:
     commands:
-      - docker build -t helloworld .
+      - echo Build client and backend docker images for testing...
+      - docker build -t irahulsah/test-react_frontend -f ./client/Dockerfile.dev ./client
+      - docker build -t irahulsah/test-api_backend -f ./backend/Dockerfile.dev ./backend
   build:
     commands:
-      - docker images
-      - docker run helloworld echo "Hello, World!" 
-
-
-
-# version: 0.2
-# phases:
-#   install:
-#     runtime-versions:
-#       docker: 19
-    
-#   pre_build:
-#     commands:
-#       - echo Build client and backend docker images for testing...
-#       - docker build -t irahulsah/test-react_frontend -f ./client/Dockerfile.dev ./client
-#       - docker build -t irahulsah/test-api_backend -f ./backend/Dockerfile.dev ./backend
-#   build:
-#     commands:
-#       - echo Build started on `date`
-#       # Run tests with built Docker images
-#       - echo Run react tests...
-#       - docker run -e CI=true irahulsah/test-react_frontend
-#       - echo Run nodejs tests...
-#       - docker run -e CI=true irahulsah/test-api_backend
-#       # Build the Docker images
-#       - echo Building the production Docker image...
-#       - docker build -t irahulsah/multicontainer-react_frontend ./client
-#       - docker build -t irahulsah/multicontainer-api_backend ./backend
-#       - docker build -t irahulsah/multicontainer-nginx ./nginx
-#       # Log in to the Docker CLI
-#       - echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" --password-stdin
-#   post_build:
-#     commands:
-#       # Take these images and push them to Docker hub
-#       - echo Pushing the Docker images...
-#       - docker push irahulsah/multicontainer-react_frontend
-#       - docker push irahulsah/multicontainer-api_backend 
-#       - docker push irahulsah/dkr-multicontainer-nginx
+      - echo Build started on `date`
+      # Run tests with built Docker images
+      - echo Run react tests...
+      - docker run -e CI=true irahulsah/test-react_frontend
+      - echo Run nodejs tests...
+      - docker run -e CI=true irahulsah/test-api_backend
+      # Build the Docker images
+      - echo Building the production Docker image...
+      - docker build -t irahulsah/multicontainer-react_frontend ./client
+      - docker build -t irahulsah/multicontainer-api_backend ./backend
+      - docker build -t irahulsah/multicontainer-nginx ./nginx
+      # Log in to the Docker CLI
+      - echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" --password-stdin
+  post_build:
+    commands:
+      # Take these images and push them to Docker hub
+      - echo Pushing the Docker images...
+      - docker push irahulsah/multicontainer-react_frontend
+      - docker push irahulsah/multicontainer-api_backend 
+      - docker push irahulsah/dkr-multicontainer-nginx
