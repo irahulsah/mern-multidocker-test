@@ -4,7 +4,7 @@ phases:
     runtime-versions:
       docker: 19
     commands:
-      - systemctl status docker
+      - service docker status
   pre_build:
     commands:
       - echo Build client and backend docker images for testing...
