@@ -2,10 +2,11 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      docker: 18
-  pre_build:
+      docker: 19
     commands:
       - docker status
+  pre_build:
+    commands:
       - echo Build client and backend docker images for testing...
       - docker build -t irahulsah/test-react_frontend -f ./client/Dockerfile.dev ./client
       - docker build -t irahulsah/test-api_backend -f ./backend/Dockerfile.dev ./backend
