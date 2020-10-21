@@ -6,27 +6,27 @@ phases:
   pre_build:
     commands:
       - echo Build client and backend docker images for testing...
-      - docker build -t lukondefmwila/react-test -f ./client/Dockerfile.dev ./client
-      - docker build -t lukondefmwila/nodejs-test -f ./backend/Dockerfile.dev ./backend
+      - docker build -t irahulsah/test-react_frontend -f ./client/Dockerfile.dev ./client
+      - docker build -t irahulsah/test-api_backend -f ./backend/Dockerfile.dev ./backend
   build:
     commands:
       - echo Build started on `date`
       # Run tests with built Docker images
       - echo Run react tests...
-      - docker run -e CI=true lukondefmwila/react-test
+      - docker run -e CI=true irahulsah/test-react_frontend
       - echo Run nodejs tests...
-      - docker run -e CI=true lukondefmwila/nodejs-test
+      - docker run -e CI=true irahulsah/test-api_backend
       # Build the Docker images
       - echo Building the production Docker image...
-      - docker build -t lukondefmwila/dkr-multicontainer-app-client ./client
-      - docker build -t lukondefmwila/dkr-multicontainer-app-backend ./backend
-      - docker build -t lukondefmwila/dkr-multicontainer-app-nginx ./nginx
+      - docker build -t irahulsah/multicontainer-react_frontend ./client
+      - docker build -t irahulsah/multicontainer-api_backend ./backend
+      - docker build -t irahulsah/multicontainer-nginx ./nginx
       # Log in to the Docker CLI
       - echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" --password-stdin
   post_build:
     commands:
       # Take these images and push them to Docker hub
       - echo Pushing the Docker images...
-      - docker push lukondefmwila/dkr-multicontainer-app-client
-      - docker push lukondefmwila/dkr-multicontainer-app-backend
-      - docker push lukondefmwila/dkr-multicontainer-app-nginx
+      - docker push irahulsah/multicontainer-react_frontend
+      - docker push irahulsah/multicontainer-api_backend 
+      - docker push irahulsah/dkr-multicontainer-nginx

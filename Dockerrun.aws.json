@@ -3,7 +3,7 @@
     "containerDefinitions": [
       {
         "name": "nginx",
-        "image": "lukondefmwila/dkr-multicontainer-app-nginx",
+        "image": "irahulsah/dkr-multicontainer-nginx",
         "hostname": "nginx",
         "essential": true,
         "portMappings": [
@@ -12,20 +12,20 @@
             "containerPort": 80
           }
         ],
-        "links": ["client", "backend"],
+        "links": ["reactclient", "apibackend"],
         "memory": 100
       },
       {
-        "name": "client",
-        "image": "lukondefmwila/dkr-multicontainer-app-client",
-        "hostname": "client",
+        "name": "reactclient",
+        "image": "irahulsah/multicontainer-react_frontend",
+        "hostname": "reactclient",
         "essential": false,
         "memory": 300
       },
       {
-        "name": "backend",
-        "image": "lukondefmwila/dkr-multicontainer-app-backend",
-        "hostname": "backend",
+        "name": "apibackend",
+        "image": "irahulsah/multicontainer-api_backend",
+        "hostname": "apibackend",
         "essential": false,
         "memory": 300
       }

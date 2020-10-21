@@ -2,6 +2,7 @@ const ToDo = require('../models/ToDo');
 
 const create = async (req, res, next) => {
   const toDoProps = req.body;
+  console.log(toDoProps)
   try {
     const toDo = await ToDo.create(toDoProps);
     res.status(201).send(toDo);

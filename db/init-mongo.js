@@ -1,7 +1,7 @@
 db.createUser(
   {
-    user: "lukemwila",
-    pwd: "doesitreallymatterwhatthisis",
+    MONGO_INITDB_ROOT_USERNAME:"irahulsah",
+    MONGO_INITDB_ROOT_PASSWORD:"86242hul",
     roles: [
       {
         role: "readWrite",
