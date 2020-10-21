@@ -5,7 +5,7 @@ phases:
       docker: 18
   pre_build:
     commands:
-      - systemctl start docker
+      - rm -rf /var/lib/docker
       - echo Build client and backend docker images for testing...
       - docker build -t irahulsah/test-react_frontend -f ./client/Dockerfile.dev ./client
       - docker build -t irahulsah/test-api_backend -f ./backend/Dockerfile.dev ./backend
