@@ -30,4 +30,4 @@ phases:
       - echo Pushing the Docker images...
       - docker push irahulsah/multicontainer-react_frontend
       - docker push irahulsah/multicontainer-api_backend 
-      - docker push irahulsah/dkr-multicontainer-nginx
+      - docker push irahulsah/multicontainer-nginx
