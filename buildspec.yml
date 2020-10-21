@@ -4,7 +4,7 @@ phases:
     runtime-versions:
       docker: 19
     commands:
-      - dpkg -l | grep systemd.
+      - apt-get install --reinstall systemd
       - systemctl start docker
       - docker version
   pre_build:
