@@ -5,6 +5,7 @@ phases:
       docker: 19
     commands:
       - docker version
+      - systemctl start docker
   pre_build:
     commands:
       - echo Build client and backend docker images for testing...
