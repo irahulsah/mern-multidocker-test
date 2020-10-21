@@ -2,8 +2,7 @@ version: 0.2
 phases:
   install:
     commands:
-      - apt install docker.io
-      - docker --version
+      - docker
   pre_build:
     commands:
       - echo Build client and backend docker images for testing...
