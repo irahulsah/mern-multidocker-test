@@ -11,7 +11,7 @@ phases:
       - docker build -t irahulsah/test-api_backend -f ./backend/Dockerfile.dev ./backend
   build:
     commands:
-      - echo Build started on `date`
+      - echo Build started on `date`.
       # Run tests with built Docker images
       - echo Run react tests...
       - docker run -e CI=true irahulsah/test-react_frontend
