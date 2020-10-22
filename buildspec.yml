@@ -31,3 +31,8 @@ phases:
       - docker push irahulsah/multicontainer-react_frontend
       - docker push irahulsah/multicontainer-api_backend 
       - docker push irahulsah/multicontainer-nginx
+
+artifacts:
+  files:
+    - '**/*'
+  name: my-webapp-artifacts
