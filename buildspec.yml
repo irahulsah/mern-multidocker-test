@@ -22,7 +22,7 @@ phases:
       - docker build -t irahulsah/multicontainer-react_frontend ./client
       - docker build -t irahulsah/multicontainer-api_backend ./backend
       - docker build -t irahulsah/multicontainer-nginx ./nginx
-      # Log in to the Docker CLI
+      # Log in to the Docker CLI ..
       - echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" --password-stdin
   post_build:
     commands:
