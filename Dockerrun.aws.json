@@ -3,7 +3,7 @@
     "containerDefinitions": [
       {
         "name": "nginx",
-        "image": "irahulsah/dkr-multicontainer-nginx",
+        "image": "irahulsah/multicontainer-nginx",
         "hostname": "nginx",
         "essential": true,
         "portMappings": [
